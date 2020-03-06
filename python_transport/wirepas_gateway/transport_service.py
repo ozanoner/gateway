@@ -347,6 +347,9 @@ class TransportService(BusClient):
             self.gw_id, sink_id, network_address, src_ep, dst_ep
         )
         self.logger.debug("Uplink traffic: %s | %s", topic, event.event_id)
+        self.logger.debug("Data: \n%s", ''.join(format(x, '02x') for x in data))
+        
+        
 
         # Set qos to 1 to avoid loading too much the broker
         # unique id in event header can be used for duplicate filtering in
